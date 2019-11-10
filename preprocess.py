@@ -22,6 +22,7 @@ def get_args():
     parser = argparse.ArgumentParser('Data pre-processing)')
     parser.add_argument('--source-lang', default=None, metavar='SRC', help='source language')
     parser.add_argument('--target-lang', default=None, metavar='TGT', help='target language')
+    parser.add_argument('--mono-lang', default=None, metavar='MONO', help='target language')
 
     parser.add_argument('--train-prefix', default=None, metavar='FP', help='train file prefix')
     parser.add_argument('--tiny-train-prefix', default=None, metavar='FP', help='tiny train file prefix')
@@ -40,8 +41,8 @@ def get_args():
 
 def main(args):
     os.makedirs(args.dest_dir, exist_ok=True)
-    src_dict = build_dictionary([args.train_prefix + '.' + args.source_lang])
-    tgt_dict = build_dictionary([args.train_prefix + '.' + args.target_lang])
+    src_dict = build_dictionary([args.train_prefix + '.' + args.mono_lang])
+    tgt_dict = build_dictionary([args.train_prefix + '.' + args.mono_lang])
 
     src_dict.finalize(threshold=args.threshold_src, num_words=args.num_words_src)
     src_dict.save(os.path.join(args.dest_dir, 'dict.' + args.source_lang))
