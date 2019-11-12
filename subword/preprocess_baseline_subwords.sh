@@ -1,0 +1,1 @@
+python preprocess.py --target-lang en --source-lang de --dest-dir baseline/prepared_subword/ --train-prefix baseline/subword/train_bpe --valid-prefix baseline/subword/valid_bpe --test-prefix baseline/subword/test_bpe --tiny-train-prefix baseline/subword/tiny_train_bpe --threshold-src 1 --threshold-tgt 1 --num-words-src 4000 --num-words-tgt 4000
